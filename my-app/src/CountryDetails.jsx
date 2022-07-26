@@ -18,33 +18,44 @@ function CountryDetails() {
           <div className="info_container">
             <div className="left_info">
               <p>
-                Native Name:{" "} <span className="values">Test</span>
+                Native Name: <span className="values">Test</span>
               </p>
               <p>
-               Region:{" "} <span className="values"></span>
+                Population: <span className="values">test</span>
               </p>
               <p>
-                Native Name:{" "} <span className="values"></span>
+                Region: <span className="values">test</span>
               </p>
               <p>
-                Native Name:{" "} <span className="values"></span>
+                Sub region: <span className="values">test</span>
               </p>
             </div>
             <div className="right_info">
-            <p>
-                Native Name:{" "} <span className="values"></span>
+              <p>
+                Capital: <span className="values">test</span>
               </p>
               <p>
-                Native Name:{" "} <span className="values"></span>
+                Top-level Domain: <span className="values"></span>
               </p>
               <p>
-                Native Name:{" "} <span className="values"></span>
+                Currencies: <span className="values"></span>
               </p>
               <p>
-                Native Name:{" "} <span className="values"></span>
+                Languages : <span className="values"></span>
               </p>
             </div>
           </div>
+          Birder Countries:
+          <div className="border_country">
+            <p>test</p>
+          </div>
+          <div className="border_country">
+            <p>test</p>
+          </div>
+          <div className="border_country">
+            <p>test</p>
+          </div>
+          
         </div>
       </div>
     </div>
