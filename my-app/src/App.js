@@ -3,12 +3,15 @@ import Header from "./Header";
 import SearchIcon from '@mui/icons-material/Search';
 import Country from "./Country"
 import {Routes,Route} from "react-router-dom";
+import CountryDetails from "./CountryDetails";
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <div className="app_body">
+      <Routes>
+        <Route path="/" element={
+          <div className="app_body">
         <div className="inputs">
           <div className="search_input">
             <SearchIcon/>
@@ -27,9 +30,15 @@ function App() {
           </div>
         </div>
         <div className="countries">
-<Country />
+        <Country />
         </div>
       </div>
+
+        }/>
+      
+      <Route path="country-details" element={<CountryDetails/>} />
+      </Routes>
+     
     </div>
   );
 }
