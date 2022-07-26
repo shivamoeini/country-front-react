@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./Header";
 import SearchIcon from '@mui/icons-material/Search';
 import Country from "./Country"
-
+import {Routes,Route} from "react-router-dom";
 
 function App() {
   return (
