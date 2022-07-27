@@ -9,6 +9,10 @@
   min-height: 100vh;
   height:100% ;
 }
+.app_adrkMode{
+  background-color:var(--dark-mode-bg) ;
+  color: white;
+}
 .app_body{
   margin: 15px auto 0;
   padding: 15px;
@@ -19,12 +23,20 @@
   background-color: white;
   box-shadow: 0px 3px 15px  rgba(0,0,0,0.2);
 }
+.app_adrkMode{
+  background-color:var(--dark-mode-bg) ;
+  color: white;
+}
 .header_container{
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 1400px;
   margin: 0 auto;
+}
+.header_darkMode{
+  background-color:var(--dark-mode-bg) ;
+  color: white;
 }
 .switch_mode{
   display: flex;
@@ -169,7 +181,7 @@ padding:15px ;
   color: gray;
 }
 .border_country{
-  padding: 10px;
+  padding:5px 10px;
   background-color: white;
   display: inline-block;
   margin: 10px;
