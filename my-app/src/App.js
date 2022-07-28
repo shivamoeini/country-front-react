@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./App.css";
 import Header from "./Header";
 import SearchIcon from '@mui/icons-material/Search';
@@ -6,18 +8,25 @@ import {Routes,Route} from "react-router-dom";
 import CountryDetails from "./CountryDetails";
 
 function App() {
+  const[darkMode,setDarkMode]=useState(false)
+
+const switchMode=()=>{
+  setDarkMode((prevState)=>!prevState);
+};
+
+
   return (
-    <div className="app">
-      <Header />
+    <div className={`app ${darkMode ? 'darkMode' : ''}`}>
+      <Header onClick={switchMode} darkMode={darkMode}/>
       <Routes>
         <Route path="/" element={
           <div className="app_body">
         <div className="inputs">
-          <div className="search_input">
+          <div className={`search_input${darkMode ? 'darkMode' : ''}`}>
             <SearchIcon/>
             <input type="text" placeholder="search for a country..." />
           </div>
-          <div className="select_region">
+          <div className={`select_region ${darkMode ? 'darkMode' : ''}`}>
             <select>
               <option>All</option>
               <option>Africa</option>
@@ -30,13 +39,13 @@ function App() {
           </div>
         </div>
         <div className="countries">
-        <Country />
+        <Country darkMode={darkMode}/>
         </div>
       </div>
 
         }/>
       
-      <Route path="country-details" element={<CountryDetails/>} />
+      <Route path="country-details" element={<CountryDetails darkMode={darkMode}/>} />
       </Routes>
      
     </div>
