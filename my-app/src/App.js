@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useRef} from "react";
 
 import "./App.css";
 import Header from "./Header";
@@ -10,6 +10,10 @@ import CountryDetails from "./CountryDetails";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [countries, setCountries] = useState([]);
+const countriesInputRef=useRef();
+const regionRef=useRef();
+
+const noCountries=countries.status || countries.message;
 
   const switchMode = () => {
     setDarkMode((prevState) => !prevState);
@@ -22,7 +26,7 @@ function App() {
       console.log(error);
     }
     
-  });
+  },[]);
 
   const fetchData = async () => {
     const response = await fetch("https://restcountries.com/v2/all");
@@ -31,6 +35,28 @@ function App() {
     setCountries(data);
    
   };
+
+
+const searchCountries=()=>{
+  const searchValue=countriesInputRef.current.value;
+  if(searchValue.trim()){
+    const fetchSearch=async()=>{
+      const response=await fetch(`https://restcountries.com/v2/name/${searchValue}`);
+      const data=await response.json();
+      setCountries(data);
+    }
+    try{
+      fetchSearch();
+    }catch(error){
+console.log(error);
+    }
+  }else{
+    fetchData();
+
+  }
+}
+
+
   return (
     <div className={`app ${darkMode ? "darkMode" : ""}`}>
       <Header onClick={switchMode} darkMode={darkMode} />
@@ -42,10 +68,10 @@ function App() {
               <div className="inputs">
                 <div className={`search_input ${darkMode ? "darkMode" : ""}`}>
                   <SearchIcon />
-                  <input type="text" placeholder="search for a country..." />
+                  <input type="text" placeholder="search for a country..."ref={countriesInputRef} onChange={searchCountries}/>
                 </div>
                 <div className={`select_region ${darkMode ? "darkMode" : ""}`}>
-                  <select>
+                  <select ref={regionRef}>
                     <option>All</option>
                     <option>Africa</option>
                     <option>Americas</option>
@@ -56,7 +82,8 @@ function App() {
                 </div>
               </div>
               <div className="countries">
-                {countries.map((country) => (
+                {!noCountries ?(
+                  countries.map((country) => (
                   <Country darkMode={darkMode}
                   key={country.alpha3code}
                   code={country.alpha3code}
@@ -66,7 +93,10 @@ function App() {
                   region={country.region}
                   flag={country.flag}
                   />
-                ))}
+                ))
+                ) :(
+                  <p>No countries found...</p>
+                )}
               </div>
             </div>
           }
