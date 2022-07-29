@@ -22,7 +22,7 @@ const switchMode=()=>{
         <Route path="/" element={
           <div className="app_body">
         <div className="inputs">
-          <div className={`search_input${darkMode ? 'darkMode' : ''}`}>
+          <div className={`search_input ${darkMode ? 'darkMode' : ''}`}>
             <SearchIcon/>
             <input type="text" placeholder="search for a country..." />
           </div>

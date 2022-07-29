@@ -23,7 +23,7 @@
   background-color: white;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
-.app_adrkMode {
+.app.adrkMode {
   background-color: var(--dark-mode-bg);
   color: white;
 }
@@ -34,7 +34,7 @@
   max-width: 1400px;
   margin: 0 auto;
 }
-.header_darkMode {
+.header.darkMode {
   background-color: var(--dark-mode-elements);
   color: white;
 }
@@ -61,6 +61,14 @@
   padding: 5px;
   border-radius: 5px;
   gap: 5px;
+}
+
+.search_input.darkMode{
+background-color: var(--dark-mode-elements);
+color: white;
+}
+.search_input.darkMode input{
+color: white;
 }
 .search_input input {
   border: 0;
@@ -117,7 +125,7 @@
   height: 370px;
   cursor: pointer;
 }
-.country.adrkMode {
+.country.darkMode {
   background-color: var(--dark-mode-elements);
   color: white;
 }
