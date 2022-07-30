@@ -67,6 +67,11 @@
 background-color: var(--dark-mode-elements);
 color: white;
 }
+
+/* .search_input.darkMode{
+  background-color: var(--dark-mode-elements);
+  color: white;
+  } */
 .search_input.darkMode input{
 color: white;
 }
