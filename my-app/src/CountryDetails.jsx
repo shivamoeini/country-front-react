@@ -34,12 +34,12 @@ function CountryDetails({ darkMode, countries }) {
       country.languages.forEach((language) => {
         languages.push(language.name);
       });
-      country.borders.forEach((border) => {
-        borders.push(border.name);
-      });
+      console.log(country.borders);
+      // country.borders.forEach((border) => {
+      //   borders.push(border.name);
+      // });
     }
   });
-
   
   const goBack = () => {
     navigate("/");
