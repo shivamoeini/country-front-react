@@ -35,7 +35,7 @@ function CountryDetails({ darkMode, countries }) {
         languages.push(language.name);
       });
       console.log(country.borders);
-      country.borders.map((border) => {
+      country.borders?.map((border) => {
         borders.push(border.name);
         console.log(border);
       });
