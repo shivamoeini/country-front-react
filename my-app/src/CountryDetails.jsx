@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams, useNavigate } from "react-router";
-function CountryDetails({ darkMode, countries }) {
+function CountryDetails({ darkMode, countries, refetch}) {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -28,15 +28,15 @@ function CountryDetails({ darkMode, countries }) {
       capital = country.capital;
       topLevelDomain = country.topLevelDomain;
 
-      country.currencies.forEach((currency) => {
+      country.currencies?.forEach((currency) => {
         currencies.push(currency.name);
       });
-      country.languages.forEach((language) => {
+      country.languages?.forEach((language) => {
         languages.push(language.name);
       });
       console.log(country.borders);
       country.borders?.map((border) => {
-        borders.push(border.name);
+        borders.push(border);
         console.log(border);
       });
     }
@@ -101,7 +101,7 @@ function CountryDetails({ darkMode, countries }) {
                 </span>
               </p>
               <p>
-                Currencies:{" "}
+                Currencies:
               
                  {currencies.map((currency)=>{
                   if(currencies.indexOf(currency)!== currencies.length- 1){
@@ -123,23 +123,43 @@ function CountryDetails({ darkMode, countries }) {
                
               </p>
               <p>
-                Languages :{" "}
-                <span className={`values ${darkMode ? "darkMode" : ""}`}>
-                  {languages}
+                Languages :
+           {languages.map((language)=>{
+            if(language.indexOf(language)!== languages.length -1){
+              return(
+                <span key={language}
+                className={`values ${darkMode ? "darkMode" : ""}`}>{" "}{language},
                 </span>
+              )
+            }else{
+              return(
+                <span key={language} 
+                className={`values ${darkMode ? "darkMode" : ""}`}
+                >
+                  {""}
+                  {language}
+                  </span>
+              )
+            }
+           })}
               </p>
             </div>
           </div>
           Birder Countries:
-          <div className={`border_country ${darkMode ? "darkMode" : ""}`}>
-            <p>test</p>
+         {borders.length ?(
+          borders.map((border) =>(
+            <div className={`border_country ${darkMode ? "darkMode" : ""}`}    onClick={()=>{
+              refetch();
+              navigate(`/${border}`)
+            }}>
+           {border}
+              </div>
+          ))
+         ):(
+          <div  className={`values ${darkMode ? "darkMode" : ""}`}>
+          <p>No Borders...</p>
           </div>
-          <div className={`border_country ${darkMode ? "darkMode" : ""}`}>
-            <p>test</p>
-          </div>
-          <div className={`border_country ${darkMode ? "darkMode" : ""}`}>
-            <p>test</p>
-          </div>
+         )}
         </div>
       </div>
     </div>
